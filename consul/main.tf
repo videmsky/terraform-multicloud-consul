@@ -4,9 +4,12 @@
 ## EKS Resources
 
 data "terraform_remote_state" "eks" {
-  backend = "local"
+  backend = "remote"
   config = {
-    path = "../eks/terraform.tfstate"
+    organization = "lotctl"
+    workspaces = {
+      name = "acme-aws-eks"
+    }
   }
 }
 
@@ -69,10 +72,13 @@ data "kubernetes_secret" "eks_federation_secret" {
 
 ## AKS Resources
 
-data "terraform_remote_state" "aks" {
-  backend = "local"
+data "terraform_remote_state" "eks" {
+  backend = "remote"
   config = {
-    path = "../aks/terraform.tfstate"
+    organization = "lotctl"
+    workspaces = {
+      name = "acme-aws-aks"
+    }
   }
 }
 

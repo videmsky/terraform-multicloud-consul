@@ -2,6 +2,13 @@
 # SPDX-License-Identifier: MPL-2.0
 
 terraform {
+  cloud {
+    organization = "lotctl"
+
+    workspaces {
+      name = "acme-consul"
+    }
+  }
   required_providers {
     helm = {
       source  = "hashicorp/helm"

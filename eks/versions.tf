@@ -2,6 +2,13 @@
 # SPDX-License-Identifier: MPL-2.0
 
 terraform {
+  cloud {
+    organization = "lotctl"
+
+    workspaces {
+      name = "acme-aws-eks"
+    }
+  }
   required_providers {
     aws = {
       source  = "hashicorp/aws"
